@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scott McGlynn — Software Engineer</title>
+<meta name="description" content="Scott McGlynn — enterprise software engineer specializing in .NET web applications, data systems, and AI integration. Relocating to the Puget Sound region.">
+
+<!--
+  ========================================================================
+  PLACEHOLDERS TO REPLACE before going live (search for "REPLACE"):
+    1. Contact email  (currently scott@scottmcglynn.com — confirm or change)
+    2. LinkedIn URL
+    3. GitHub URL
+  Also worth a sanity check: employment dates and titles in the
+  Experience section — adjust to match exactly how you want them framed.
+  ========================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper:      #f7f4ee;
+    --paper-2:    #f1ece2;
+    --ink:        #1a221e;
+    --ink-soft:   #45504a;
+    --muted:      #756f64;
+    --evergreen:  #16513b;
+    --evergreen-2:#1d6b4e;
+    --moss:       #3f8f6b;
+    --line:       #ddd6c8;
+    --maxw:       760px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Hanken Grotesk", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.68;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    position: relative;
+  }
+
+  /* faint grain / paper texture overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* thin accent rule across the very top */
+  .topbar {
+    height: 4px;
+    background: linear-gradient(90deg, var(--evergreen), var(--moss) 60%, var(--paper-2));
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---------- shared section bits ---------- */
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--evergreen-2);
+  }
+
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  section:first-of-type { border-top: none; }
+
+  h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.15;
+    margin: 14px 0 28px;
+    letter-spacing: -0.01em;
+  }
+
+  p { color: var(--ink-soft); }
+  p + p { margin-top: 16px; }
+
+  a { color: var(--evergreen-2); text-decoration: none; }
+  a:hover { color: var(--ink); }
+
+  /* ---------- hero ---------- */
+  header.hero { padding: 88px 0 64px; }
+
+  .hero .eyebrow { display: block; margin-bottom: 22px; }
+
+  .hero h1 {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: clamp(44px, 8vw, 76px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+
+  .hero .lede {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(19px, 3vw, 23px);
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin-top: 24px;
+    max-width: 30ch;
+  }
+
+  .hero-links {
+    margin-top: 34px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .hero-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 15px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.4);
+    transition: border-color .2s, background .2s, transform .2s;
+  }
+  .hero-links a:hover {
+    border-color: var(--moss);
+    background: #fff;
+    transform: translateY(-2px);
+  }
+  .hero-links svg { width: 15px; height: 15px; flex: none; }
+
+  /* ---------- prose / about ---------- */
+  .about p { font-size: 18px; }
+
+  /* ---------- work ---------- */
+  .work-item { padding: 26px 0; border-top: 1px solid var(--line); }
+  .work-item:first-child { border-top: none; padding-top: 0; }
+
+  .work-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .work-item h3 {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: 21px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .work-item .scope {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .work-item p { margin-top: 10px; }
+
+  .tags { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 7px; }
+  .tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    color: var(--evergreen);
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    padding: 4px 9px;
+    border-radius: 5px;
+  }
+
+  /* ---------- experience ---------- */
+  .role { padding: 22px 0; border-top: 1px solid var(--line); }
+  .role:first-child { border-top: none; padding-top: 0; }
+  .role-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .role h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .role .org { color: var(--evergreen-2); font-weight: 500; }
+  .role .when {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .role p { margin-top: 8px; font-size: 16px; }
+
+  /* ---------- education + skills as two columns on wide ---------- */
+  .edu-item { padding: 18px 0; border-top: 1px solid var(--line); }
+  .edu-item:first-child { border-top: none; padding-top: 0; }
+  .edu-item h3 { font-size: 16px; font-weight: 600; color: var(--ink); }
+  .edu-item .school { color: var(--ink-soft); font-size: 15px; margin-top: 3px; }
+  .edu-item .meta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .skills-grid { display: grid; gap: 20px; }
+  .skill-group h4 {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--evergreen-2);
+    margin-bottom: 8px;
+  }
+  .skill-group p { font-size: 15px; color: var(--ink-soft); }
+
+  @media (min-width: 620px) {
+    .skills-grid { grid-template-columns: 1fr 1fr; gap: 26px 40px; }
+  }
+
+  /* ---------- contact ---------- */
+  .contact .eyebrow { display: block; margin-bottom: 14px; }
+  .contact h2 { margin-bottom: 18px; }
+  .contact p { font-size: 18px; max-width: 46ch; }
+  .contact .big-mail {
+    display: inline-block;
+    margin-top: 22px;
+    font-family: "Fraunces", serif;
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    border-bottom: 2px solid var(--moss);
+    padding-bottom: 3px;
+  }
+  .contact .big-mail:hover { border-color: var(--ink); }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 30px 0 50px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- entrance animation ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(14px); animation: rise .7s cubic-bezier(.2,.7,.2,1) forwards; }
+    .d1 { animation-delay: .05s; }
+    .d2 { animation-delay: .15s; }
+    .d3 { animation-delay: .25s; }
+    .d4 { animation-delay: .35s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+  }
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <span class="eyebrow reveal d1">Software Engineer · Enterprise Applications</span>
+    <h1 class="reveal d2">Scott McGlynn</h1>
+    <p class="lede reveal d3">I build and modernize enterprise web applications that thousands of people depend on every day.</p>
+    <nav class="hero-links reveal d4" aria-label="Contact links">
+      <!-- REPLACE: email -->
+      <a href="mailto:scott@scottmcglynn.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        Email
+      </a>
+      <!-- REPLACE: LinkedIn URL -->
+      <a href="https://www.linkedin.com/in/REPLACE" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM8.34 17.34V10.5H6.06v6.84zM7.2 9.5a1.32 1.32 0 1 0 0-2.64 1.32 1.32 0 0 0 0 2.64m10.14 7.84v-3.75c0-2-.43-3.54-2.77-3.54a2.43 2.43 0 0 0-2.19 1.2h-.03V10.5H10.1v6.84h2.28v-3.39c0-.9.17-1.76 1.28-1.76s1.1 1.02 1.1 1.82v3.33z"/></svg>
+        LinkedIn
+      </a>
+      <!-- REPLACE: GitHub URL -->
+      <a href="https://github.com/REPLACE" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85l-.01 2.74c0 .27.18.58.69.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10"/></svg>
+        GitHub
+      </a>
+    </nav>
+  </header>
+
+  <section class="about">
+    <span class="eyebrow">About</span>
+    <h2>Fifteen-plus years shipping software inside a globally distributed organization.</h2>
+    <p>I'm a full-stack engineer who has spent my career building the enterprise web applications that keep a 70-plus-school institution running — student data systems, scheduling tools, and staff workflow platforms used daily across three continents. My core stack is the Microsoft ecosystem: C#, VB.NET, and ASP.NET on SQL Server, extended with SharePoint and the Power Platform, and I'm currently leading a migration of legacy Web Forms systems to modern .NET 8 with Clean Architecture.</p>
+    <p>More recently I've been integrating large language models into production tooling — retrieval-augmented assistants, automated document analysis, and AI-assisted workflows that genuinely save people time. I completed my M.S. in Software Engineering in 2024 and I'm relocating to the Puget Sound region, where I own property on Camano Island, to take on my next role.</p>
+  </section>
+
+  <section class="work">
+    <span class="eyebrow">Selected Work</span>
+    <h2>Systems I've designed, built, and shipped.</h2>
+
+    <div class="work-item">
+      <div class="work-head">
+        <h3>eSeminar Management System</h3>
+        <span class="scope">40+ schools · production</span>
+      </div>
+      <p>A web application for scheduling, registration, and tracking of professional-development seminars across more than forty schools. I own the system end to end and am currently modernizing it from legacy VB.NET Web Forms to .NET 8 Razor Pages with Entity Framework Core and a clean repository architecture. Along the way I diagnosed and rebuilt a critical reporting path, cutting a page that took nearly two minutes to render down to under six seconds.</p>
+      <div class="tags">
+        <span class="tag">C#</span><span class="tag">.NET 8</span><span class="tag">Razor Pages</span><span class="tag">EF Core</span><span class="tag">SQL Server</span><span class="tag">Entra ID</span>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-head">
+        <h3>Elementary Placement Program</h3>
+        <span class="scope">30+ schools · production</span>
+      </div>
+      <p>An enterprise application supporting student placement decisions across more than thirty elementary schools, integrating with the organization's student information system and giving administrators a structured, auditable workflow in place of ad-hoc spreadsheets.</p>
+      <div class="tags">
+        <span class="tag">ASP.NET</span><span class="tag">SQL Server</span><span class="tag">SharePoint</span><span class="tag">Power Platform</span>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-head">
+        <h3>Learning Lens</h3>
+        <span class="scope">M.S. capstone · 7-person team</span>
+      </div>
+      <p>A graduate capstone integrating multiple large language models — GPT-4, Claude, Perplexity, and a locally hosted Ollama model — into a Moodle plugin suite for educational assessment, with a retrieval-augmented documentation assistant serving a 70-plus-school knowledge base. Built in Flutter and Dart on AWS infrastructure.</p>
+      <div class="tags">
+        <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">LLM / RAG</span><span class="tag">AWS</span><span class="tag">Python</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience">
+    <span class="eyebrow">Experience</span>
+    <h2>Where I've worked.</h2>
+
+    <div class="role">
+      <div class="role-head">
+        <h3>Software Engineer / Application Developer · <span class="org">U.S. DoD Education Activity</span></h3>
+        <span class="when">2007 — Present</span>
+      </div>
+      <p>Design, build, and maintain enterprise web applications and data systems serving more than seventy schools worldwide. Full-stack .NET development, SQL Server, SharePoint and Power Platform solutions, student information systems integration, and AI tooling. Roles based in Okinawa, Wiesbaden, and Kaiserslautern, Germany.</p>
+    </div>
+
+    <div class="role">
+      <div class="role-head">
+        <h3>K–12 Educator</h3>
+        <span class="when">earlier career</span>
+      </div>
+      <p>Began my career as a classroom music educator before moving into educational technology and, ultimately, software engineering — a path that grounds my technical work in a deep understanding of the people and institutions the software serves.</p>
+    </div>
+  </section>
+
+  <section class="education">
+    <span class="eyebrow">Education</span>
+    <h2>Degrees.</h2>
+
+    <div class="edu-item">
+      <h3>M.S., Software Engineering</h3>
+      <div class="school">University of Maryland Global Campus</div>
+      <div class="meta">2024 · 4.0 GPA</div>
+    </div>
+    <div class="edu-item">
+      <h3>M.A., Education — Instructional Technology</h3>
+      <div class="school">City University of Seattle</div>
+      <div class="meta">1995</div>
+    </div>
+    <div class="edu-item">
+      <h3>B.A., Music Education</h3>
+      <div class="school">Central Washington University</div>
+      <div class="meta">1992</div>
+    </div>
+  </section>
+
+  <section class="skills">
+    <span class="eyebrow">Toolkit</span>
+    <h2>Technologies I work in.</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h4>Languages</h4>
+        <p>C#, VB.NET, Java, Python, JavaScript, SQL, Dart</p>
+      </div>
+      <div class="skill-group">
+        <h4>Web &amp; Frameworks</h4>
+        <p>ASP.NET, .NET 8, Razor Pages, Blazor, Entity Framework Core</p>
+      </div>
+      <div class="skill-group">
+        <h4>Platforms &amp; Data</h4>
+        <p>SQL Server, SharePoint, Power Apps &amp; Power Automate, AWS</p>
+      </div>
+      <div class="skill-group">
+        <h4>AI &amp; Practices</h4>
+        <p>LLM integration, RAG, prompt engineering, Clean Architecture, REST APIs, Git / CI</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <span class="eyebrow">Get in touch</span>
+    <h2>Let's talk.</h2>
+    <p>I'm open to software engineering roles in the Puget Sound region and to remote work. The fastest way to reach me is email.</p>
+    <!-- REPLACE: email -->
+    <a class="big-mail" href="mailto:scott@scottmcglynn.com">scott@scottmcglynn.com</a>
+  </section>
+
+  <footer>
+    © <span id="yr"></span> Scott McGlynn · scottmcglynn.com
+  </footer>
+
+</div>
+
+<script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+</body>
+</html>
